@@ -1,24 +1,26 @@
 from pyrogram import Client
 from pyrogram.types import Message
+from dotenv import load_dotenv
 import os
 import re
 import time
 
-api_id = 24379421
-api_hash = "545969994106f7f812946b0a3be998ca"
-channel_username = "DS_ML_DL_NLP"
+load_dotenv()
+API_ID = os.getenv("API_ID")
+API_HASH = os.getenv("API_HASH")
+CHANNEL_USERNAME = os.getenv("CHANNEL_USERNAME")
 
 base_download_folder = r"C:\Users\sony\Videos\AIML by Krish Naik"
 os.makedirs(base_download_folder, exist_ok=True)
 
 start_from_id = 20  # 👈 Set your starting message ID here
 
-app = Client("my_session", api_id=api_id, api_hash=api_hash)
+app = Client("my_session", API_ID=API_ID, API_HASH=API_HASH)
 
 with app:
     print("✅ Logged in successfully.")
 
-    messages = list(app.get_chat_history(channel_username, limit=10000))
+    messages = list(app.get_chat_history(CHANNEL_USERNAME, limit=10000))
     messages.reverse()
 
     current_chapter = "Uncategorized"
