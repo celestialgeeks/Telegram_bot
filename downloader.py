@@ -21,14 +21,13 @@ if os.path.exists(last_id_file):
         start_from_id = int(f.read().strip())
     print(f"🔄 Resuming from message ID {start_from_id}")
 else:
-    start_from_id = 66
+    start_from_id = 0
     print(f"🚀 Starting fresh download.")
 
 app = Client(
     "my_session",
-    API_ID=API_ID,
-    API_HASH=API_HASH,
-    downloadd_timeout=1200,)
+    api_id=API_ID,
+    api_hash=API_HASH)
 
 with app:
     print("✅ Logged in successfully.")
@@ -78,7 +77,7 @@ with app:
                     file_path = app.download_media(
                         message,
                         file_name=full_path,
-                        block_size= 512 * 1024)
+                        timeout=1200)
 
                     end_time = time.time()
                     elapsed_time = end_time - start_time
@@ -91,5 +90,5 @@ with app:
                 except Exception as e:
                     print(f"❌ Error downloading media: {e}")
                     print(f"⏳ Waiting 10 seconds before continuing...")
-                    time.sleep(3)  # Wait before retrying
+                    time.sleep(10)  # Wait before retrying
                     continue  
