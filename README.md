@@ -49,7 +49,7 @@ A Python bot that automatically downloads media files from a specified Telegram 
 
 2. Run the script:
    ```bash
-   python telegram_downloader.py
+   python downloader.py
    ```
 
 3. The first time you run the script, you'll be prompted to enter your phone number and the authentication code sent to your Telegram account.
