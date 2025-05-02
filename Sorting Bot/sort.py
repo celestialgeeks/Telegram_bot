@@ -1,12 +1,14 @@
 from pyrogram import Client
+from dotenv import load_dotenv
 import os
 import re
 import shutil
 
-# === CONFIGURATION ===
-api_id = "YOUR_API_ID" # Replace with your actual API ID (integer)
-api_hash = "YOUR_API_HASH"  # Replace with your actual API Hash
-channel_username = "@YourChannelUsername"  # Replace with the Telegram channel name
+# === LOAD ENVIRONMENT VARIABLES ===
+load_dotenv()
+api_id = int(os.getenv("API_ID"))
+api_hash = os.getenv("API_HASH")
+channel_username = os.getenv("CHANNEL_USERNAME")
 download_folder = r"C:\Users\sony\Videos\AIML by Krish Naik\Uncategorized"
 
 # === HELPERS ===
